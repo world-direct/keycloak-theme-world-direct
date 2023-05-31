@@ -1,10 +1,10 @@
 
 .my-color {
-	color: red;
+	color: black;
 }
 
 .my-font {
-	font-family: 'Work Sans';
+	/* font-family: 'Work Sans'; */
 }
 
 .my-root-class {
@@ -12,5 +12,33 @@
 }
 
 .my-root-class body {
-	background: url(./assets/background.svg) no-repeat center center fixed;
+	/* background: url("./assets/wd/HEX WD_Claim.svg") no-repeat center/40% fixed; */
+	/* background: url("./assets/wd/HEX WD_Claim.svg"), url(./assets/wd/Outlook_Footer_Signatur.svg), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)); */
+	background: white;
+	display: block;
+}
+
+.my-header:before {
+	/* https://stackoverflow.com/a/8978010 */
+	background-image: url("./assets/wd/HEX WD_Claim.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+    display: inline-block;
+    width: 270px;
+    height: 105px;
+    content:"";
+}
+
+.my-header {
+	margin-bottom: 0px !important;
+}
+
+.my-header-wrapper {
+	padding: 0.5em !important;
+}
+
+.my-card {
+	/* box-shadow: 1px 1px black; */
+	outline: 1px solid;
 }
