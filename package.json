@@ -1,11 +1,11 @@
 {
-    "name": "keycloakify-starter",
-    "homepage": "https://starter.keycloakify.dev",
+    "name": "keycloak-theme-world-direct",
+    "homepage": "https://sso.world-direct.at",
     "version": "4.4.14",
-    "description": "A starter/demo project for keycloakify",
+    "description": "A World-Direct keycloak theme built using keycloakify",
     "repository": {
         "type": "git",
-        "url": "git://github.com/codegouvfr/keycloakify-starter.git"
+        "url": "git://github.com/world-direct/keycloak-theme-world-direct.git"
     },
     "scripts": {
         "postinstall": "copy-keycloak-resources-to-public",
@@ -15,7 +15,7 @@
         "storybook": "start-storybook -p 6006"
     },
     "keycloakify": {
-        "extraThemeProperties": [ 
+        "extraThemeProperties": [
             "foo=bar"
         ],
         "extraLoginPages": [
@@ -30,7 +30,7 @@
             "your-custom-attribute"
         ]
     },
-    "author": "u/garronej",
+    "author": "u/hwo-wd",
     "license": "MIT",
     "keywords": [],
     "dependencies": {
