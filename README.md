@@ -26,7 +26,7 @@ Given this, the most important files are:
 * [KcApp.css](src/keycloak-theme/login/KcApp.css), for defining your styles
 * fiddling with resources
 
-This repos commits give good pointers, too.
+This repo's commits give good pointers, too.
 
 ## Deployment
 
