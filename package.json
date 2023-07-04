@@ -15,23 +15,9 @@
         "storybook": "start-storybook -p 6006"
     },
     "keycloakify": {
-        // "extraThemeProperties": [
-        //     "foo=bar"
-        // ],
-        // "extraLoginPages": [
-        //     "my-extra-page-1.ftl",
-        //     "my-extra-page-2.ftl"
-        // ],
-        // "extraAccountPages": [
-        //     "my-extra-page-1.ftl",
-        //     "my-extra-page-2.ftl"
-        // ],
-        // "customUserAttributes": [
-        //     "your-custom-attribute"
-        // ],
-        // "extraThemeNames": [
-        //     "keycloakify-starter-variant-1"
-        // ]
+        "extraThemeProperties": [
+            "locales=de,en"
+        ]
     },
     "author": "u/hwo-wd",
     "license": "MIT",
