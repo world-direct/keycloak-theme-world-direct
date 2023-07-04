@@ -34,7 +34,7 @@ This repo's commits give good pointers, too.
 * Push to the `main` branch, which in turn will automatically create a tag, generate the release notes, lint and build a `.jar` file containing the final theme
 * Deploy the resulting jar file by either following the [Keycloak](https://www.keycloak.org/docs/latest/server_development/#deploying-themes) or [Red Hat SSO](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6/html/server_developer_guide/themes#deploying_themes) docs.
   * tl;dr: copy the resulting jar file to a certain location, e.g., `${jboss.home}/standalone/deployments/`
-  > Note: the latest version is **automatically picked up and deployed to <https://sso.world-direct.at>** when running the [ansible playbook](https://github.com/world-direct/redhatsso/) via `ansible-playbook site.yaml --tags keycloak_themes`
+  > Note: the latest version is **automatically picked up and deployed to <https://sso.world-direct.at>** when running the [ansible playbook](https://github.com/world-direct/redhatsso/) via `ansible-playbook site.yaml --tags themes`
 
 ## Usages
 
