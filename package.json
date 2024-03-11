@@ -1,7 +1,7 @@
 {
     "name": "keycloak-theme-world-direct",
     "homepage": "https://sso.world-direct.at",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "description": "A World-Direct keycloak theme built using keycloakify",
     "repository": {
         "type": "git",
