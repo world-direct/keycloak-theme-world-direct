@@ -1,0 +1,8 @@
+{
+  "themes": [
+    {
+      "name": "keycloak-theme-world-direct",
+      "types": [ "login" ]
+    }
+  ]
+}

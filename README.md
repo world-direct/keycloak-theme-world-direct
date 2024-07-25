@@ -1,46 +1,44 @@
 # Keycloak Theme World-Direct
 
-This repo is based on the [Keycloakify v7 starter template](https://github.com/keycloakify/keycloakify-starter) and has been (minimally) adapted to serve the needs for <https://sso.world-direct.at>.
+> An opinionated, simple theme used as the `login` theme for World-Direct's RHBK instances.
 
-> Note: although stated in the [Standalone keycloak theme](https://github.com/keycloakify/keycloakify-starter#standalone-keycloak-theme) section, I did not perform said changes (except for the CI part) with the main reason being the ability to rebase more easily in future.
+![Login theme](img/login_theme.png)
 
-## Getting started
+## Development
 
-Is as simple as running:
+* Start keycloak, with theme caching disabled, and pre-created realms:
 
-```shell
-yarn install && yarn storybook
-```
+  ```shell
+  podman machine start
+  podman-compose up -d
+  ```
 
-and seeing live updates on your screen whenever you make edits.
+* Next we need to set up a user which we can use for login purposes[^1]:
+  navigate to <http://localhost:8080/admin/master/console/#/adfs-mock/users>, login via `admin`/`dev_only` and...
+  * ... create a new user; for example: `Username`: `aaa` and hit `Save`
+  * ... give this new user a password by navigating to the `Credentials` tab > `Set password` and set a password (e.g., Password/Password confirmation: `aaa`, Temporary: `Off`)
+* For theme development, navigate to <http://localhost:8080/realms/theme-dev/account/>, by clicking on the `ADFS mock Login` button, you can use the previously set up user for logging in
 
-### Important files
+[^1]: This step is required since users are not exported as part of the realm export json schema.
 
-The upstream docs state[^0] that:
-> [..] customizing the [Template.tsx](src/keycloak-theme/login/Template.tsx) component alone will already cover 90% of your customization needs.[^0]
+### Realm Details
 
-Given this, the most important files are:
+The import will import two realms:
 
-* [Template.tsx](src/keycloak-theme/login/Template.tsx)
-* [KcApp.tsx](src/keycloak-theme/login/KcApp.tsx), for adding your own CSS `classes`
-* [KcApp.css](src/keycloak-theme/login/KcApp.css), for defining your styles
-* fiddling with resources
-
-This repo's commits give good pointers, too.
+1. `theme-dev` realm is where all the theme-related development happens; moreover, it has a Identity Provider `adfs mock` configured which mocks an ADFS by setting up a trust towards the
+2. `adfs-mock` realm: it serves solely for IdP users
 
 ## Deployment
 
-* To create a new deployment, simply raise the version in [package.json](package.json); to create pre-release versions use the following versioning scheme: `0.1.2-rc.1`
-* Push to the `main` branch, which in turn will automatically create a tag, generate the release notes, lint and build a `.jar` file containing the final theme
-* Deploy the resulting jar file by either following the [Keycloak](https://www.keycloak.org/docs/latest/server_development/#deploying-themes) or [Red Hat SSO](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6/html/server_developer_guide/themes#deploying_themes) docs.
-  * tl;dr: copy the resulting jar file to a certain location, e.g., `${jboss.home}/standalone/deployments/`
-  > Note: the latest version is **automatically picked up and deployed to <https://sso.world-direct.at>** when running the [ansible playbook](https://github.com/world-direct/redhatsso/) via `ansible-playbook site.yaml --tags themes`
+* To create a new release, simply create a tag matching any of the naming schemas found in [Github action](.github/workflows/ci.yaml#L7), for example `v2.0.0`, `v2.0.1-beta1` etc. and push this tag to the remote
+* This will create a [new release](https://github.com/world-direct/keycloak-theme-world-direct/releases) with ` keycloak-theme-world-direct.jar` as an artifact
 
-## Usages
+### Referencing the theme in Keycloak/RHBK
 
-To reference this theme, navigate to your realm > `Realm Settings` > `Themes` and choose `keycloak-theme-world-direct` as your `Login Theme`; *optionally* you can also enable `Internationalization Enabled` and set `de` as the `Default Locale`:
-
-![referencing_theme_in_realm](docs/referencing_theme_in_realm.png)
+* Download the jar file and deploy it by either following the [Keycloak](https://www.keycloak.org/docs/latest/server_development/#deploying-themes) guide:
+  > To deploy the archive to Keycloak, add it to the `providers/` directory of Keycloak and restart the server if it is already running. When you are working with production-optimized images, you might want to invoke `kc.sh build` prior to restarting Keycloak
+* To reference this theme, navigate to your realm > `Realm Settings` > `Themes` and choose `keycloak-theme-world-direct` as your `Login Theme`; *optionally* you can also navigate to `Realm Settings` > `Localization` and enable `Internationalization` and set `Supported locales` to `German` and `English` w/ `German` as the `Default locale`.
+* For production purposes open a PR by changing the corresponding version at <https://github.com/world-direct/rhbk/blob/main/src/ansible/group_vars/asp.yaml#L10>
 
 ## Issues & Contributions
 
@@ -48,5 +46,5 @@ Feel free to raise an issue, contributions are welcome via PRs too :-).
 
 ## References
 
-* [^0]: [Keycloakify Storybook](https://storybook.keycloakify.dev) shows all the base template provided out-of-the-box by Keycloak which can be overridden
-* [1]: [Keycloakify Starter](https://github.com/keycloakify/keycloakify-starter#standalone-keycloak-theme) inluding its docs and its `Use this template` possibility
+* [1]: [Red Hat build of Keycloak Server Developer guide \> Themes](https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html-single/server_developer_guide/index#theme_types)
+* [2] [Keycloak Server Developer guide \> Themes](https://www.keycloak.org/docs/latest/server_development/#_themes)
