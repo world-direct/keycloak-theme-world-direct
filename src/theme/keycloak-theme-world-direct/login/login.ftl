@@ -1,13 +1,19 @@
-<#-- copied from https://github1s.com/keycloak/keycloak/blob/release/24.0/themes/src/main/resources/theme/keycloak.v2/login/login.ftl -->
+<#-- copied and extended for (1) Terms and Condition and (2) Legal link from https://github1s.com/keycloak/keycloak/blob/release/24.0/themes/src/main/resources/theme/keycloak.v2/login/login.ftl (commit `https://github.com/keycloak/keycloak/commit/dd2605b054c2095a92f6284c528c2c000ab79b03`) -->
+<#-- any updates are best done via diffing, the commit history of this file should be clean-ish enough -->
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
     <#if section = "header">
         ${msg("loginAccountTitle")}
+
+        <div id="wd-legal-area">
+            <a href="https://www.world-direct.at/impressum">${kcSanitize(msg("legal"))}</a>&nbsp; |&nbsp;
+            <a href="https://www.world-direct.at/datenschutz">${kcSanitize(msg("data_policy"))}</a>
+        </div>
     <#elseif section = "form">
         <div id="kc-form">
           <div id="kc-form-wrapper">
             <#if realm.password>
-                <form id="kc-form-login" class="${properties.kcFormClass!} onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+                <form id="kc-form-login" class="${properties.kcFormClass!} onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post" style="display: none;">
                     <#if !usernameHidden??>
                         <div class="${properties.kcFormGroupClass!}">
                             <label for="username" class="${properties.kcLabelClass!}">
@@ -109,12 +115,13 @@
         </#if>
     <#elseif section = "socialProviders" >
         <#if realm.password && social.providers??>
-            <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
+            <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!} pf-v5-c-login__main-body">
                 <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
                     <#list social.providers as p>
                         <li class="${properties.kcFormSocialAccountListItemClass!}">
-                            <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>" aria-label="${p.displayName}"
+                            <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if> ${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonBlockClass!}" aria-label="${p.displayName}"
                                     type="button" href="${p.loginUrl}">
+                                <div style="display: inline-flex; align-items: center;">
                                 <#if p.iconClasses?has_content>
                                     <#switch p.alias>
                                         <#case "google">
@@ -160,6 +167,7 @@
                                             </svg>
                                             <#break>
                                         <#case "microsoft">
+                                        <#case "adfs">
                                             <svg viewBox="0 0 448 512" aria-hidden="true">
                                                 <path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"></path>
                                             </svg>
@@ -184,9 +192,9 @@
                                                 <path d="M239.1 6.3l-208 78c-18.7 7-31.1 25-31.1 45v225.1c0 18.2 10.3 34.8 26.5 42.9l208 104c13.5 6.8 29.4 6.8 42.9 0l208-104c16.3-8.1 26.5-24.8 26.5-42.9V129.3c0-20-12.4-37.9-31.1-44.9l-208-78C262 2.2 250 2.2 239.1 6.3zM256 68.4l192 72v1.1l-192 78-192-78v-1.1l192-72zm32 356V275.5l160-65v133.9l-160 80z"/>
                                             </svg>
                                     </#switch>
-                                <#else>
-                                    <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
                                 </#if>
+                                    <label class="${properties.kcFormSocialAccountNameClass!}">&nbsp;${p.displayName!} Login</label>
+                                </div>
                             </a>
                         </li>
                     </#list>

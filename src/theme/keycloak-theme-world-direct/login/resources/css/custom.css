@@ -1,3 +1,82 @@
-/* .login-pf body {
+#wd-legal-area {
+    font-size: var(--pf-v5-global--FontSize--xs);
+    font-family: RedHatText;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#kc-header-wrapper {
+    color: black;
+}
+
+@media screen and (max-width: 767px) {
+    #kc-header-wrapper {
+        padding: 0;
+    }
+}
+
+#kc-header {
+    text-align: center;
+}
+
+#kc-header::before {
+    display: inline-block;
+    height: 105px;
+    width: 270px;
+    background-image: url('../img/HEX WD_Claim.158470c3125b91dc9edf.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: "";
+}
+
+/* .pf-m-primary.active, .pf-m-primary:active, .pf-m-primary:focus, .pf-m-primary:hover, .open .dropdown-toggle.pf-m-primary */
+#kc-login {
+    background-color: #0088ce;
+    background-image: none;
+    border-color: #00659c;
+    color: #fff;
+}
+
+.login-pf body {
     background: white none;
+}
+
+/* .pf-v5-c-login__main-body {
+    padding-bottom: 0px;
 } */
+
+#kc-social-providers {
+    margin-top: 1rem;
+}
+
+/* .kc-social-item */
+#social-adfs {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    /* vertical-align: middle;
+    align-items: center; */
+}
+
+.kc-social-item svg {
+    height: 3rem;
+}
+
+.kc-social-item label {
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.pf-v5-c-login {
+	align-items: unset;
+}
+
+.pf-v5-c-login__main-header {
+	padding-bottom: 0;
+}
+
+.pf-v5-c-login__main-footer {
+	padding-bottom: 1rem;
+}
