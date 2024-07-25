@@ -3,6 +3,7 @@ services:
     image: quay.io/keycloak/keycloak:24.0.5
     volumes:
       - ${PWD}/src/theme:/opt/keycloak/themes
+      - ${PWD}/realms:/opt/keycloak/data/import:ro
     command:
       - start-dev
       - --import-realm
