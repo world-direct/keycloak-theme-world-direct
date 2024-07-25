@@ -2,9 +2,7 @@
   "themes": [
     {
       "name": "keycloak-theme-world-direct",
-      "types": [ "login" ],
-      "description": "A custom Keycloak theme for https://sso.world-direct.at",
-      "author": "Helmut Wolf"
+      "types": [ "login" ]
     }
   ]
 }
