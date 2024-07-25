@@ -121,7 +121,8 @@
                         <li class="${properties.kcFormSocialAccountListItemClass!}">
                             <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if> ${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonBlockClass!}" aria-label="${p.displayName}"
                                     type="button" href="${p.loginUrl}">
-                                <div style="display: inline-flex; align-items: center;">
+                              <div>
+                                <div>
                                 <#if p.iconClasses?has_content>
                                     <#switch p.alias>
                                         <#case "google">
@@ -195,6 +196,7 @@
                                 </#if>
                                     <label class="${properties.kcFormSocialAccountNameClass!}">&nbsp;${p.displayName!} Login</label>
                                 </div>
+                              </div>
                             </a>
                         </li>
                     </#list>

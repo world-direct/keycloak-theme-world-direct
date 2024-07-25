@@ -30,21 +30,17 @@
     content: "";
 }
 
-/* .pf-m-primary.active, .pf-m-primary:active, .pf-m-primary:focus, .pf-m-primary:hover, .open .dropdown-toggle.pf-m-primary */
 #kc-login {
     background-color: #0088ce;
     background-image: none;
     border-color: #00659c;
     color: #fff;
+    cursor: pointer;
 }
 
 .login-pf body {
     background: white none;
 }
-
-/* .pf-v5-c-login__main-body {
-    padding-bottom: 0px;
-} */
 
 #kc-social-providers {
     margin-top: 1rem;
@@ -60,11 +56,21 @@
     align-items: center; */
 }
 
-.kc-social-item svg {
+#social-adfs > div {
+    width: 100%;
     height: 3rem;
 }
 
-.kc-social-item label {
+#social-adfs > div > div {
+    display: inline-flex;
+    align-items: center;
+}
+
+.kc-social-item > div > div > svg {
+    height: 3rem;
+}
+
+.kc-social-provider-name {
     vertical-align: middle;
     cursor: pointer;
 }
