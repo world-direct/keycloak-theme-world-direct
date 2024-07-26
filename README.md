@@ -4,6 +4,11 @@
 
 ![Login theme](img/login_theme.png)
 
+**Note**: as you can see, this theme does not feature the usual user/password login fields, due to:
+
+* we are logging in using ADFS
+* should the ADFS be down, the root user can still login manually be running `$("#kc-form-login").style.removeProperty('display')` in the browser's console
+
 ## Development
 
 * Start keycloak, with theme caching disabled, and pre-created realms:
