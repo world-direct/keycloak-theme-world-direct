@@ -36,7 +36,7 @@ The import will import two realms:
 ## Deployment
 
 * To create a new release, simply create a tag matching any of the naming schemas found in [Github action](.github/workflows/ci.yaml#L7), for example `v2.0.0`, `v2.0.1-beta1` etc. and push this tag to the remote
-* This will create a [new release](https://github.com/world-direct/keycloak-theme-world-direct/releases) with ` keycloak-theme-world-direct.jar` as an artifact
+* This will create a [new release](https://github.com/world-direct/keycloak-theme-world-direct/releases) with `keycloak-theme-world-direct.jar` as an artifact
 
 ### Referencing the theme in Keycloak/RHBK
 
@@ -51,5 +51,6 @@ Feel free to raise an issue, contributions are welcome via PRs too :-).
 
 ## References
 
-* [1]: [Red Hat build of Keycloak Server Developer guide \> Themes](https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html-single/server_developer_guide/index#theme_types)
+* [1] [Red Hat build of Keycloak Server Developer guide \> Themes](https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html-single/server_developer_guide/index#theme_types)
 * [2] [Keycloak Server Developer guide \> Themes](https://www.keycloak.org/docs/latest/server_development/#_themes)
+* [3] [World-Direct Theme guide](https://github.com/world-direct/rhbk/blob/main/docs/guides/themes.md)
