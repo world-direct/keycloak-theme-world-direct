@@ -38,6 +38,10 @@
     cursor: pointer;
 }
 
+.displayNone {
+    display: none;
+}
+
 .login-pf body {
     background: white none;
 }
@@ -73,6 +77,14 @@
 .kc-social-provider-name {
     vertical-align: middle;
     cursor: pointer;
+}
+
+#kc-form-buttons {
+    margin-top: unset;
+}
+
+div.pf-v5-c-login__main-body {
+	padding-bottom: 0;
 }
 
 .pf-v5-c-login {
