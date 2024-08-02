@@ -3,6 +3,10 @@
     {
       "name": "keycloak-theme-world-direct",
       "types": [ "login" ]
+    },
+    {
+      "name": "keycloak-theme-world-direct-without-forms-login",
+      "types": [ "login" ]
     }
   ]
 }
