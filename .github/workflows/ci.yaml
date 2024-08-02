@@ -21,6 +21,12 @@ jobs:
     if: github.event.head_commit.author.name != 'actions'
     steps:
       - uses: actions/checkout@v4
+      - name: Create two versions of theme
+        run: |
+          cp -r theme/keycloak-theme-world-direct theme/keycloak-theme-world-direct-without-forms-login
+          sed -i '/kcFormAdditionalClass=/c\kcFormAdditionalClass=displayNone' ./theme/keycloak-theme-world-direct-without-forms-login/login/theme.properties
+
+          sed -i '/kcFormAdditionalClass/d' theme/keycloak-theme-world-direct/login/theme.properties
       - name: Create jar artifact
         run: |
           zip -r keycloak-theme-world-direct.jar *

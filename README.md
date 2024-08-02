@@ -4,10 +4,13 @@
 
 ![Login theme](img/login_theme.png)
 
-**Note**: as you can see, this theme does not feature the usual user/password login fields, due to:
+The final jar version ships with two versions of this theme[^1]:
 
-* we are logging in using ADFS
-* should the ADFS be down, the root user can still login manually be running `$("#kc-form-login").classList.remove('displayNone')` in the browser's console
+1. `keycloak-theme-world-direct-without-forms-login`: with the login form hidden as shown in the screenshot above
+    * should the ADFS be down for whatever reason, form login (e.g. for the root user) is still possible via running `$("#kc-form-login").classList.remove('displayNone')` in the browser's console
+2. `keycloak-theme-world-direct`: shows the usual login form, also features social providers
+
+[^1]: created in the `Create two versions of theme` step in [ci.yaml](.github/workflows/ci.yaml#:24)
 
 ## Development
 
@@ -18,13 +21,13 @@
   podman-compose up -d
   ```
 
-* Next we need to set up a user which we can use for login purposes[^1]:
+* Next we need to set up a user which we can use for login purposes[^2]:
   navigate to <http://localhost:8080/admin/master/console/#/adfs-mock/users>, login via `admin`/`dev_only` and...
   * ... create a new user; for example: `Username`: `aaa` and hit `Save`
   * ... give this new user a password by navigating to the `Credentials` tab > `Set password` and set a password (e.g., Password/Password confirmation: `aaa`, Temporary: `Off`)
 * For theme development, navigate to <http://localhost:8080/realms/theme-dev/account/>, by clicking on the `ADFS mock Login` button, you can use the previously set up user for logging in
 
-[^1]: This step is required since users are not exported as part of the realm export json schema.
+[^2]: This step is required since users are not exported as part of the realm export json schema.
 
 ### Realm Details
 
@@ -42,7 +45,7 @@ The import will import two realms:
 
 * Download the jar file and deploy it by either following the [Keycloak](https://www.keycloak.org/docs/latest/server_development/#deploying-themes) guide:
   > To deploy the archive to Keycloak, add it to the `providers/` directory of Keycloak and restart the server if it is already running. When you are working with production-optimized images, you might want to invoke `kc.sh build` prior to restarting Keycloak
-* To reference this theme, navigate to your realm > `Realm Settings` > `Themes` and choose `keycloak-theme-world-direct` as your `Login Theme`; *optionally* you can also navigate to `Realm Settings` > `Localization` and enable `Internationalization` and set `Supported locales` to `German` and `English` w/ `German` as the `Default locale`.
+* To reference this theme, navigate to your realm > `Realm Settings` > `Themes` and choose `keycloak-theme-world-direct` or `keycloak-theme-world-direct-without-forms-login` as your `Login Theme`; *optionally* you can also navigate to `Realm Settings` > `Localization` and enable `Internationalization` and set `Supported locales` to `German` and `English` w/ `German` as the `Default locale`.
 * For production purposes open a PR by changing the corresponding version at <https://github.com/world-direct/rhbk/blob/main/src/ansible/group_vars/asp.yaml#L10>
 
 ## Issues & Contributions
