@@ -48,6 +48,12 @@ The import will import two realms:
 * To reference this theme, navigate to your realm > `Realm Settings` > `Themes` and choose `keycloak-theme-world-direct` or `keycloak-theme-world-direct-without-forms-login` as your `Login Theme`; *optionally* you can also navigate to `Realm Settings` > `Localization` and enable `Internationalization` and set `Supported locales` to `German` and `English` w/ `German` as the `Default locale`.
 * For production purposes open a PR by changing the corresponding version at <https://github.com/world-direct/rhbk/blob/main/src/ansible/group_vars/asp.yaml#L10>
 
+### Caveats
+
+For yet unknown reasons, the theme looks different when being run on RHBK vs. the locally run Keycloak instance: the `custom.css` served in production has only 88 lines (of the 99 lines expected), so there seems to be some optimization going on. Note the increased padding of the `Sign in` button as well as on the social provider buttons. For the time being, we simply live with this issue which is tracked in [\#21](https://github.com/world-direct/keycloak-theme-world-direct/issues/21).
+
+![rhbk_css_optimizations](img/rhbk_css_optimizations.png)
+
 ## Issues & Contributions
 
 Feel free to raise an issue, contributions are welcome via PRs too :-).
