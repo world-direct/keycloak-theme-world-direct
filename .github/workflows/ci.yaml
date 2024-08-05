@@ -21,6 +21,14 @@ jobs:
     if: github.event.head_commit.author.name != 'actions'
     steps:
       - uses: actions/checkout@v4
+      - name: Create version.txt
+        run: |
+          commit=$(git rev-parse --short HEAD)
+          if tag=$(git describe --tags --abbrev=0 2>/dev/null); then
+              printf "Tag: %s\nCommit: %s\n" "$tag" "$commit" > META-INF/version.txt
+          else
+              printf "Tag: none\nCommit: %s\n" "$commit" > META-INF/version.txt
+          fi
       - name: Create two versions out of base theme
         run: |
           cp -r theme/keycloak-theme-world-direct-base theme/keycloak-theme-world-direct-without-forms-login
