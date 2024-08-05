@@ -8,9 +8,9 @@ The final jar version ships with two versions of this theme[^1]:
 
 1. `keycloak-theme-world-direct-without-forms-login`: with the login form hidden as shown in the screenshot above
     * should the ADFS be down for whatever reason, form login (e.g. for the root user) is still possible via running `$("#kc-form-login").classList.remove('displayNone')` in the browser's console
-2. `keycloak-theme-world-direct`: shows the usual login form, also features social providers
+2. `keycloak-theme-world-direct`: shows the usual login form, allowing a user/password to be entered; also features social providers
 
-[^1]: created in the `Create two versions of theme` step in [ci.yaml](.github/workflows/ci.yaml#:24)
+[^1]: created in the `Create two versions out of base theme` step in [ci.yaml](.github/workflows/ci.yaml#:24)
 
 ## Development
 
