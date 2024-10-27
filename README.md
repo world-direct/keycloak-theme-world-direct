@@ -14,11 +14,18 @@ The final jar version ships with two versions of this theme[^1]:
 
 ## Development
 
-* Start keycloak, with theme caching disabled, and pre-created realms:
+* Start keycloak, with theme caching disabled, and pre-created realms.
+  Using podman:
 
   ```shell
   podman machine start
-  podman-compose up -d
+  podman compose up -d
+  ```
+
+  Using docker:
+  
+  ```shell
+  docker compose up
   ```
 
 * Next we need to set up a user which we can use for login purposes[^2]:
