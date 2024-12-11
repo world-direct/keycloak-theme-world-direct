@@ -1,6 +1,6 @@
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:24.0.5
+    image: quay.io/keycloak/keycloak:26.0.7
     volumes:
       - ${PWD}/src/theme:/opt/keycloak/themes
       - ${PWD}/realms:/opt/keycloak/data/import:ro
@@ -13,6 +13,6 @@ services:
     ports:
       - 8080:8080
     environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=dev_only
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=dev_only
       - KC_LOG_LEVEL=info,at.worlddirect:trace

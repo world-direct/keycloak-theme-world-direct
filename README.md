@@ -20,11 +20,11 @@ The final jar version ships with two versions of this theme[^1]:
 
   ```shell
   podman machine start
-  podman compose up -d
+  podman compose up
   ```
 
   Using docker:
-  
+
   ```shell
   docker compose up
   ```
@@ -58,7 +58,8 @@ The import will import two realms:
 
 ### Caveats
 
-For yet unknown reasons, the theme looks different when being run on RHBK vs. the locally run Keycloak instance: the `custom.css` served in production has only 88 lines (of the 99 lines expected), so there seems to be some optimization going on. Note the increased padding of the `Sign in` button as well as on the social provider buttons. For the time being, we simply live with this issue which is tracked in [\#21](https://github.com/world-direct/keycloak-theme-world-direct/issues/21).
+* Keycloak/RHBK respects the operating system theme, so make sure to test dark and light mode of your theme
+* For yet unknown reasons, the theme looks different when being run on RHBK vs. the locally run Keycloak instance: the `custom.css` served in production has only 88 lines (of the 99 lines expected), so there seems to be some optimization going on. Note the increased padding of the `Sign in` button as well as on the social provider buttons. For the time being, we simply live with this issue which is tracked in [\#21](https://github.com/world-direct/keycloak-theme-world-direct/issues/21).
 
 ![rhbk_css_optimizations](img/rhbk_css_optimizations.png)
 
@@ -68,6 +69,6 @@ Feel free to raise an issue, contributions are welcome via PRs too :-).
 
 ## References
 
-* [1] [Red Hat build of Keycloak Server Developer guide \> Themes](https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html-single/server_developer_guide/index#theme_types)
+* [1] [Red Hat build of Keycloak Server Developer guide \> Themes](https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/26.0/html-single/server_developer_guide/index#themes)
 * [2] [Keycloak Server Developer guide \> Themes](https://www.keycloak.org/docs/latest/server_development/#_themes)
 * [3] [World-Direct Theme guide](https://github.com/world-direct/rhbk/blob/main/docs/guides/themes.md)
