@@ -1,16 +1,13 @@
 <#-- copied and adapted from https://github1s.com/keycloak/keycloak/blob/release/26.0/themes/src/main/resources/theme/keycloak.v2/login/social-providers.ftl -->
 <#macro show social>
-  <div class="pf-v5-c-login__main-footer-band">
-      <p class="pf-v5-c-login__main-footer-band-item">
-          ${msg("identity-provider-login-label")}
-      </p>
-  </div>
-  <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
+  <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!} pf-v5-c-login__main-body">
       <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
           <#list social.providers as p>
               <li class="${properties.kcFormSocialAccountListItemClass!}">
-                  <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>" aria-label="${p.displayName}"
+                  <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonBlockClass!}" aria-label="${p.displayName}"
                           type="button" href="${p.loginUrl}">
+                    <div>
+                      <div>
                       <#if p.iconClasses?has_content>
                           <#switch p.alias>
                               <#case "google">
@@ -64,6 +61,7 @@
                                   </svg>
                                   <#break>
                               <#case "microsoft">
+                              <#case "adfs">
                                   <svg viewBox="0 0 448 512" aria-hidden="true">
                                       <title id="title">Microsoft</title>
                                       <path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"></path>
@@ -94,9 +92,10 @@
                                       </svg>
                                   </span>
                           </#switch>
-                      <#else>
-                          <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
                       </#if>
+                      <label class="${properties.kcFormSocialAccountNameClass!}">&nbsp;${p.displayName!} Login</label>
+                      </div>
+                    </div>
                   </a>
               </li>
           </#list>
