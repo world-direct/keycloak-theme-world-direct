@@ -4,6 +4,7 @@ services:
     volumes:
       - ${PWD}/src/theme:/opt/keycloak/themes
       - ${PWD}/realms:/opt/keycloak/data/import:ro
+      - ${PWD}/providers:/opt/keycloak/providers
     command:
       - start-dev
       - --import-realm
