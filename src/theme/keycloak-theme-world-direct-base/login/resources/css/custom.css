@@ -98,3 +98,7 @@ div.pf-v5-c-login__main-body {
 .pf-v5-c-login__main-footer {
     padding-bottom: 1rem;
 }
+
+::-ms-reveal {
+    display: none;
+}
