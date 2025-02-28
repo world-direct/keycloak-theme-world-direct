@@ -9,12 +9,6 @@
     color: black;
 }
 
-@media screen and (max-width: 767px) {
-    #kc-header-wrapper {
-        padding: 0;
-    }
-}
-
 #kc-header {
     text-align: center;
 }
@@ -101,4 +95,16 @@ div.pf-v5-c-login__main-body {
 
 ::-ms-reveal {
     display: none;
+}
+
+@media screen and (max-width: 767px) {
+    #kc-header-wrapper {
+        padding: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .pf-v5-c-login__container {
+        height: 12rem;
+    }
 }
