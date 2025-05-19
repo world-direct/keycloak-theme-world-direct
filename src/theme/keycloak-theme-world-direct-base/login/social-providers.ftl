@@ -1,20 +1,14 @@
 <#-- copied and adapted from https://github1s.com/keycloak/keycloak/blob/release/26.2/themes/src/main/resources/theme/keycloak.v2/login/social-providers.ftl -->
 <#macro show social>
-  <div class="${properties.kcLoginMainFooterBand!}">
-      <span class="${properties.kcLoginMainFooterBandItem!} ${properties.kcLoginMainFooterHelperText!}">
-          ${msg("identity-provider-login-label")}
-      </span>
-  </div>
-  <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
+  <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!} pf-v5-c-login__main-body">
       <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
           <#list social.providers as p>
               <li class="<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}<#else>${properties.kcFormSocialAccountListItemClass!}</#if>">
                   <a data-once-link data-disabled-class="${properties.kcFormSocialAccountListButtonDisabledClass!}" id="social-${p.alias}"
-                          class="${properties.kcFormSocialAccountListButtonClass!}" aria-label="${p.displayName}"
+                          class="${properties.kcFormSocialAccountListButtonClass!} ${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonBlockClass!}" aria-label="${p.displayName}"
                           type="button" href="${p.loginUrl}">
-                        <#if p.iconClasses?has_content>
-                            <span class="${p.iconClasses!}">${p.displayName!}</span>
-                        <#else>
+                    <div>
+                      <div>
                         <#switch p.alias>
                             <#case "google">
                                 <svg viewBox="0 0 48 48" class="google" aria-hidden="true">
@@ -62,6 +56,7 @@
                                 </svg>
                                 <#break>
                             <#case "microsoft">
+                            <#case "adfs">
                                 <svg viewBox="0 0 448 512" aria-hidden="true">
                                     <path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"></path>
                                 </svg>
@@ -86,8 +81,9 @@
                                     <path d="M239.1 6.3l-208 78c-18.7 7-31.1 25-31.1 45v225.1c0 18.2 10.3 34.8 26.5 42.9l208 104c13.5 6.8 29.4 6.8 42.9 0l208-104c16.3-8.1 26.5-24.8 26.5-42.9V129.3c0-20-12.4-37.9-31.1-44.9l-208-78C262 2.2 250 2.2 239.1 6.3zM256 68.4l192 72v1.1l-192 78-192-78v-1.1l192-72zm32 356V275.5l160-65v133.9l-160 80z"/>
                                 </svg>
                         </#switch>
-                            <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
-                        </#if>
+                        <label class="${properties.kcFormSocialAccountNameClass!}">&nbsp;${p.displayName!} Login</label>
+                      </div>
+                    </div>
                   </a>
               </li>
           </#list>
