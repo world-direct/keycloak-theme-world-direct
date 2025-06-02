@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.head_commit.author.name != 'actions'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Create version.txt
         run: |
           commit=$(git rev-parse --short HEAD)
@@ -40,12 +40,12 @@ jobs:
         run: |
           zip -r keycloak-theme-world-direct.jar *
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: keycloak-theme-world-direct.jar
           path: src/keycloak-theme-world-direct.jar
       - name: Create Release when we a tag ref has been created
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           generate_release_notes: true
